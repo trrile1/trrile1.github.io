@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Public Art</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+      <div id="map" style="width: 800px; height: 600px"></div>
+      <script>
+        var map = L.map('map',{ center: [40.5, -88.98], zoom: 12});
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap',
+          maxZoom: 17,
+          minZoom: 9
+        }).addTo(map);
+
+        // var mapCenterPoint = L.marker([40.5, -88.98]).addTo(map);
+        //
+        var PublicArt = null;
+
+        $.getJSON("data/BNPublicArt.geojson",function(data){
+          L.geoJson(data).addTo(map);
+          // PublicArt = L.geoJSON(data,{
+          //   onEachFeature: function (feature, layer) {
+          //     layer.bindPopup(feature.properties.Public_Art);
+          //   }
+          // }).addTo(map);
+        });
+
+        // var geojsonFeature = {
+        //       "type": "Feature",
+        //       "properties": {
+        //           "name": "Coors Field",
+        //           "amenity": "Baseball Stadium",
+        //           "popupContent": "This is where the Rockies play!"
+        //       },
+        //       "geometry": {
+        //           "type": "Point",
+        //           "coordinates": [-88.95, 40.5]
+        //       }
+        //   };
+        //   L.geoJSON(geojsonFeature).addTo(map);
+
+      </script>
+
+  </body>
+</html>
