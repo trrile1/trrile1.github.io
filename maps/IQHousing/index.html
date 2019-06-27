@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Income Qualified Housing</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="css/IQHousing.css"
+  </head>
+  <body>
+      <div class='custom-popup' id="map" style="width: 800px; height: 600px"></div>
+      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+      <script src="js/leaflet.awesome-markers.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+        var map = L.map('map',{ center: [40.5, -88.98], zoom: 10});
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap',
+          maxZoom: 17,
+          minZoom: 9
+        }).addTo(map);
+
+        // Icon Class
+        var Marker = L.AwesomeMarkers.Icon.extend({
+          options:{
+            icon: 'home',
+            prefix: 'fa'
+          }
+        });
+
+        // Create specific icons
+        var PBRAMarker = new Marker({markerColor: 'blue'});
+        var USDAMarker = new Marker({markerColor: 'green'});
+        var LIHTCMarker = new Marker({markerColor: 'purple'});
+
+        var Housing = null;
+
+        $.getJSON("data/IQHousing.geojson",function(data){
+          Housing = L.geoJson(data,{
+            onEachFeature: function (feature, layer) {
+              function checkLIHTC(feature, layer) {
+                if (feature.properties.LIHTC == '1') {
+                  return '<p>LIHTC</p>'
+                } else {
+                  return ''
+                }
+              }
+              function checkPBRA(feature, layer) {
+                if (feature.properties.PBRA == '1') {
+                  return '<p>PBRA</p>'
+                } else {
+                  return ''
+                }
+              }
+              function checkUSDA(feature, layer) {
+                if (feature.properties.USDA == '1') {
+                  return '<p>USDA</p>'
+                } else {
+                  return ''
+                }
+              }
+              var popupContent = feature.properties.displayName + '</br>' + feature.properties.displayAddr + '</br>' + checkLIHTC(feature) + checkPBRA(feature) + checkUSDA(feature)
+              layer.bindTooltip(feature.properties.displayName)
+              layer.bindPopup(popupContent);
+            }, pointToLayer: function (feature, latlng) {
+              if (feature.properties.PBRA == 1){
+                var marker = L.marker(latlng,{icon: PBRAMarker});
+              } else if (feature.properties.USDA == 1){
+                var marker = L.marker(latlng,{icon: USDAMarker});
+              } else {
+                var marker = L.marker(latlng,{icon: LIHTCMarker});
+              };
+              return marker;
+            }
+          }).addTo(map);
+        });
+
+        // Create Leaflet Control Object for Legend
+        var legend = L.control({position: 'topright'});
+
+        // Function that runs when legend is added to map
+        legend.onAdd = function (map) {
+
+          // Create Div Element and populate it with HTML
+          var div = L.DomUtil.create('div', 'legend');
+          div.innerHTML += '<b>Type of Housing</b><br />';
+          div.innerHTML += 'Program<br />';
+          div.innerHTML += '<i style="background: #38aadd"></i> <p><a href="https://www.hud.gov/hudprograms/rs8pbra">PBRA</a></p>';
+          div.innerHTML += '<i style="background: #72b026"></i> <p><a href="https://www.rd.usda.gov/programs-services/multi-family-housing-rental-assistance">USDA</a></p>';
+          div.innerHTML += '<i style="background: #d152b8"></i> <p><a href="https://www.ihda.org/developers/tax-credits/low-income-tax-credit/">LIHTC Only</a></p>';
+
+          // Return the Legend div containing the HTML content
+          return div;
+        };
+
+        // Add Legend to Map
+        legend.addTo(map);
+
+      </script>
+
+  </body>
+</html>
