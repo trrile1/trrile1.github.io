@@ -29,12 +29,28 @@
         var PublicArt = null;
 
         $.getJSON("data/BNPublicArt.geojson",function(data){
-          PublicArt = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-              layer.bindPopup(feature.properties.Public_Art);
-            }
-          }).addTo(map);
+          L.geoJson(data).addTo(map);
+          // PublicArt = L.geoJSON(data,{
+          //   onEachFeature: function (feature, layer) {
+          //     layer.bindPopup(feature.properties.Public_Art);
+          //   }
+          // }).addTo(map);
         });
+
+        // var geojsonFeature = {
+        //       "type": "Feature",
+        //       "properties": {
+        //           "name": "Coors Field",
+        //           "amenity": "Baseball Stadium",
+        //           "popupContent": "This is where the Rockies play!"
+        //       },
+        //       "geometry": {
+        //           "type": "Point",
+        //           "coordinates": [-88.95, 40.5]
+        //       }
+        //   };
+        //   L.geoJSON(geojsonFeature).addTo(map);
+
       </script>
 
   </body>
