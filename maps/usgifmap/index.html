@@ -31,27 +31,40 @@
       </style>
       <div id="map"></div>
       <script>
-          var mymap = L.map('map', {
+          var map = L.map('map', {
               // renderer: L.canvas()
           }).setView([40.5, -88.9], 6);
-          var Esri_Basemap = L.esri.basemapLayer('Topographic').addTo(mymap);
-          var poly1 = [
-            [40, -88],
-            [40.5, -88],
-            [40.5, -88.5],
-            [40, -88.5]
-          ];
-          L.polygon(poly1, {fill:'url(../data/giphy.gif)'}).addTo(mymap);
-
-          // const lakes = L.esri.featureLayer({
-          //     url: 'https://ca.dep.state.fl.us/arcgis/rest/services/OpenData/LAKES/MapServer/0/',
-          //     where: "SHAPE.AREA > 10000000",
-          //     style: function () {
-          //         return {
-          //             fill: 'url(../data/kermit.gif)',
-          //         }
-          //     }
-          // }).addTo(mymap);
+          var Esri_Basemap = L.esri.basemapLayer('Gray').addTo(map);
+          const states = L.esri.featureLayer({
+            url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_States_Generalized/FeatureServer/0',
+            style: function (feature) {
+              if (feature.properties.STATE_NAME === 'Alabama') {
+                return { color: 'white', fill: 'url(../data/alabama.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'California') {
+                return { color: 'white', fill: 'url(../data/california.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Illinois') {
+                  return { color: 'white', fill: 'url(../data/illinois.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Florida') {
+                return { color: 'white', fill: 'url(../data/florida.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Iowa') {
+                return { color: 'white', fill: 'url(../data/iowa.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Indiana') {
+                return { color: 'white', fill: 'url(../data/indiana.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Kentucky') {
+                return { color: 'white', fill: 'url(../data/kentucky.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Michigan') {
+                return { color: 'white', fill: 'url(../data/michigan.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Minnesota') {
+                return { color: 'white', fill: 'url(../data/minnesota.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Missouri') {
+                return { color: 'white', fill: 'url(../data/missouri.gif)', fillOpacity: 0.8};
+              } else if (feature.properties.STATE_NAME === 'Wisconsin') {
+                return { color: 'white', fill: 'url(../data/wisconsin.gif)', fillOpacity: 0.8};
+              } else {
+                return { color: 'white'};
+              }
+            }
+          }).addTo(map);
       </script>
 
 
