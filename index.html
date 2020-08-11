@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Tim's Portfolio</title>
+  <title>Tim Riley - Portfolio</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet" />
+
   <style>
-    * {
-      box-sizing: border-box;
+    .grid {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 1rem;
+    }
+
+    .grid > a {
+      background: #e6dec9;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    .grid a:hover {
+      background: #baa3dc;
     }
 
     body {
+      font: 100% sans-serif;
       margin: 0;
-      font-family: sans-serif;
+      background-image: url("./graphics/background-map.jpg");
     }
 
-    /* Style the header */
-    .header {
-      background-color: #E6E6FA;
+    header {
+      background-color: #e6dec9;
       padding: 20px;
       text-align: center;
     }
 
-    /* Style the top navigation bar */
-    .topnav {
-      overflow: hidden;
-      background-color: #191970;
+    h1 {
+      font-size: 2em;
     }
 
-    /* Style the topnav links */
-    .topnav a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
+    h2 {
+      font-size: 1.2em;
     }
 
-    /* Change color on hover */
-    .topnav a:hover {
-      background-color: #E0FFFF;
-      color: black;
+    .project-img {
+      width: 100%;
     }
 
-    /* Create three equal columns that floats next to each other */
-    .column {
-      background-color: #F0F8FF;
-      float: left;
-      width: 33.33%;
-      padding: 15px;
+    @media screen and (min-width: 1350px) {
+      body { font-size: 125%}
+      .grid { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))}
     }
 
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-    @media screen and (max-width:600px) {
-      .column {
-        width: 100%;
-      }
-    }
-
-    /* Style the footer */
-    .footer {
-      background-color: #E6E6FA;
-      padding: 10px;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Tim's Portfolio</h1>
-  </div>
-  <div class="topnav">
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-  </div>
-  <div class="row">
-    <div class="column">
-      <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+  <header>
+    <div>
+      <h1>Tim's Projects</h1>
     </div>
-
-    <div class="column">
-      <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-    </div>
-
-    <div class="column">
-      <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-    </div>
-  </div>
-  <div class="footer">
-    <p>Footer</p>
+  </header>
+  <div class="grid">
+    <a class="project" href="rural-transportation">
+      <h2>Rural Transportation</h2>
+      <img class="project-img" src="./graphics/rural-transportation-thumbnail.png">
+        </img>
+      <p class="project-desc">
+        A visualization of an on-demand rural transportation network, constructed
+        from schedule information.
+      </p>
+    </a>
+    <a class="project" href="https://github.com/mcrpc/route-66">
+      <h2>Route 66 in McLean County</h2>
+      <img class="project-img" src="./graphics/route-66-thumbnail.png"></img>
+      <p class="project-desc">
+        Collection of historical photos, site information, and location data,
+        presented using ArcGIS Story Maps (link in repo About information.)
+      </p>
+    </a>
+    <a class="project" href="https://mcplan.org/greenways/greenways-story-map">
+      <h2>Greenways of McLean County</h2>
+      <img class="project-img" src="./graphics/greenways-thumbnail.png"></img>
+      <p class="project-desc">
+        ArcGIS Story Map exploration of parks, trails, and other green recreation areas
+        in McLean County, Illinois.
+      </p>
+    </a>
+    <a class="project" href="https://github.com/mcrpc/human-service-transportation">
+      <h2>Human Service Transportation Plan Analysis</h2>
+      <img class="project-img" src="./graphics/hstp-thumbnail.png"></img>
+      <p class="project-desc">
+        RStudio project which gathers American Community Survey data at various
+        levels and processes into maps, charts, and tables. An RMarkdown file
+        populates a report with the generated graphics and tables for easy access
+        by other planners.
+      </p>
+    </a>
   </div>
 </body>
 </html>
