@@ -1,44 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'/>
-  <title>Chimney Rock, North Carolina</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+  <title>Tim's Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin:0; padding:0; }
-    #map { position:absolute; top:0; bottom:0; width:100%; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    /* Style the header */
+    .header {
+      background-color: #E6E6FA;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Style the top navigation bar */
+    .topnav {
+      overflow: hidden;
+      background-color: #191970;
+    }
+
+    /* Style the topnav links */
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change color on hover */
+    .topnav a:hover {
+      background-color: #E0FFFF;
+      color: black;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      background-color: #F0F8FF;
+      float: left;
+      width: 33.33%;
+      padding: 15px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width:600px) {
+      .column {
+        width: 100%;
+      }
+    }
+
+    /* Style the footer */
+    .footer {
+      background-color: #E6E6FA;
+      padding: 10px;
+      text-align: center;
+    }
   </style>
 </head>
-
 <body>
+  <div class="header">
+    <h1>Tim's Portfolio</h1>
+  </div>
+  <div class="topnav">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+  </div>
+  <div class="row">
+    <div class="column">
+      <h2>Column</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+    </div>
 
-<div id='map'></div>
+    <div class="column">
+      <h2>Column</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+    </div>
 
-  <script>
-    // Change this to your Token ----------------------
-    mapboxgl.accessToken = 'pk.eyJ1IjoidHJyaWxlMSIsImEiOiJjanVlNGg5aXMwcDF0NDNyeXg4Y3Axc2t0In0.yioavWI-uixNmFWr2piy6Q';
-    // ------------------------------------------------
-    var map = new mapboxgl.Map({
-      container: 'map',
-      // Change this to your style --------------------
-      style: 'mapbox://styles/trrile1/ck3x9ih3u3gd71clmuaxqo1f1',
-      // ----------------------------------------------
-      // Change to your location ----------------------
-      zoom: 15,
-      center: [-82.248985, 35.432006]
-      // ----------------------------------------------
-    });
-    // Add geolocate control to the map.
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-      trackUserLocation: true
-    }));
-  </script>
-
+    <div class="column">
+      <h2>Column</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Footer</p>
+  </div>
 </body>
-
 </html>
