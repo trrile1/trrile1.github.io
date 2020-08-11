@@ -24,17 +24,30 @@
 
     .grid a:hover {
       background: #baa3dc;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #0000FF;
+      text-decoration: underline;
     }
 
     body {
       font: 100% sans-serif;
+      color: #1a1a1a;
       margin: 0;
       background-image: url("./graphics/background-map.jpg");
     }
 
     header {
       background-color: #e6dec9;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
     }
 
@@ -43,6 +56,8 @@
     }
 
     h2 {
+      margin: 0;
+      margin-bottom: 1rem;
       font-size: 1.2em;
     }
 
@@ -61,6 +76,7 @@
   <header>
     <div>
       <h1>Tim's Projects</h1>
+      <a href="https://github.com/trriley">@trriley</a>
     </div>
   </header>
   <div class="grid">
