@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Tim Riley - Portfolio</title>
+  <title>Tim Riley</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet" />
+  <link rel="icon" href="graphics/compass-svgrepo-com.png">
 
   <style>
     .grid {
       padding: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       grid-gap: 1rem;
+      margin-top: 12.5vh;
     }
 
     .grid > a {
-      background: #e6dec9;
+      background: #efeadc;
       padding: 1.5rem;
       border-radius: 1rem;
       color: inherit;
@@ -23,7 +25,7 @@
     }
 
     .grid a:hover {
-      background: #baa3dc;
+      background: #dfd5b9;
       color: inherit;
       text-decoration: inherit;
     }
@@ -42,13 +44,17 @@
       font: 100% sans-serif;
       color: #1a1a1a;
       margin: 0;
-      background-image: url("./graphics/background-map.jpg");
+      background-color: #f5f5f0;
+      /* background-image: url("./graphics/background-map.jpg"); */
     }
 
     header {
       background-color: #e6dec9;
       padding: 10px;
       text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
     }
 
     h1 {
@@ -67,7 +73,10 @@
 
     @media screen and (min-width: 1350px) {
       body { font-size: 125%}
-      .grid { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))}
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        margin-top: 17.5vh;
+      }
     }
 
   </style>
@@ -75,23 +84,15 @@
 <body>
   <header>
     <div>
-      <h1>Tim's Projects</h1>
-      <a href="https://github.com/trriley">@trriley</a>
+      <h1>Tim Riley</h1>
+      <p>Planner, GIS Analyst, USAF Veteran</p>
+      <!-- <a href="https://github.com/trriley">@trriley</a> -->
     </div>
   </header>
   <div class="grid">
-    <a class="project" href="rural-transportation">
-      <h2>Rural Transportation</h2>
-      <img class="project-img" src="./graphics/rural-transportation-thumbnail.png">
-        </img>
-      <p class="project-desc">
-        A visualization of an on-demand rural transportation network, constructed
-        from schedule information.
-      </p>
-    </a>
     <a class="project" href="https://github.com/mcrpc/route-66">
       <h2>Route 66 in McLean County</h2>
-      <img class="project-img" src="./graphics/route-66-thumbnail.png"></img>
+      <img class="project-img" src="./graphics/route-66.png"></img>
       <p class="project-desc">
         Collection of historical photos, site information, and location data,
         presented using ArcGIS Story Maps (link in repo About information.)
@@ -99,20 +100,40 @@
     </a>
     <a class="project" href="https://mcplan.org/greenways/greenways-story-map">
       <h2>Greenways of McLean County</h2>
-      <img class="project-img" src="./graphics/greenways-thumbnail.png"></img>
+      <img class="project-img" src="./graphics/greenways-story-map.png"></img>
       <p class="project-desc">
         ArcGIS Story Map exploration of parks, trails, and other green recreation areas
         in McLean County, Illinois.
       </p>
     </a>
     <a class="project" href="https://github.com/mcrpc/human-service-transportation">
-      <h2>Human Service Transportation Plan Analysis</h2>
-      <img class="project-img" src="./graphics/hstp-thumbnail.png"></img>
+      <h2>HSTP Analysis</h2>
+      <img class="project-img" src="./graphics/hstp.png"></img>
       <p class="project-desc">
         RStudio project which gathers American Community Survey data at various
         levels and processes into maps, charts, and tables. An RMarkdown file
         populates a report with the generated graphics and tables for easy access
         by other planners.
+      </p>
+    </a>
+    <a class="project" href="amtrak-explorer">
+      <h2>Amtrak Explorer</h2>
+      <img class="project-img" src="./graphics/amtrak-explorer.png">
+        </img>
+      <p class="project-desc">
+        Leaflet.js web map application which displays minimum travel times
+        between Amtrak Stations, derived from a GTFS file processed in R using
+        tidytransit.
+      </p>
+    </a>
+    <a class="project" href="rural-transportation">
+      <h2>Rural Transportation</h2>
+      <img class="project-img" src="./graphics/rural-transportation.png">
+        </img>
+      <p class="project-desc">
+        A visualization of an on-demand rural transportation network,
+        constructed from schedule information using QGIS and incorporated into
+        a Mapbox tileset.
       </p>
     </a>
   </div>
